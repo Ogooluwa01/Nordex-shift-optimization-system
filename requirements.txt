@@ -1,0 +1,13 @@
+pandas
+numpy
+matplotlib
+scikit_learn
+mlflow
+fastapi
+uvicorn
+optuna
+dagshub
+pyodbc
+seaborn
+setuptools
+-e . pip install -r requireme
