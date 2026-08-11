@@ -1,9 +1,16 @@
+nordex_env/
+
+
+312132sa\z\
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
 *$py.class
 
-# C extensions
+extensions
 *.so
 
 # Distribution / packaging
