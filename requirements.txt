@@ -10,4 +10,4 @@ dagshub
 pyodbc
 seaborn
 setuptools
--e . pip install -r requireme
+
