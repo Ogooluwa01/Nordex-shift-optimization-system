@@ -1,4 +1,5 @@
 import pandas as pd
+import sys
 import numpy as np
 from src.logger import configure_logger
 from src.exception import MyException
@@ -40,7 +41,7 @@ def load_data():
 
     except Exception as e:
         logging.error(f"Error occured during data ingestion {e}")
-        raise MyException(e)
+        raise MyException(e, sys)
 
 load_data()
 
