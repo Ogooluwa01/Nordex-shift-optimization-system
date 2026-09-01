@@ -6,7 +6,7 @@ from config.constant import target_column
 from sklearn.model_selection import train_test_split
 from src.logger import configure_logger
 from src.data.data_ingestion import load_data
-from src.data.data_validation import DataValidation
+from src.data.data_validation import validate_data
 from src.exception import MyException
 
 logging = configure_logger()
@@ -91,18 +91,18 @@ class DataPreprocessing:
             logging.error("error occured while splitting data into training and testing {e}")
             raise MyException(e, sys)
 
-    @staticmethod
 
-    def start_data_preprocessing(shift_data: pd.DataFrame):
-        try:
-            processor = DataPreprocessing(shift_data)
-            shift_data = processor.preprocess_data()
-            return shift_data
-        except Exception as e:
-            logging.error(f"error occured during data preprocessing....")
-            raise MyException(e, sys)
+
+def start_data_preprocessing(shift_data: pd.DataFrame):
+    try:
+        processor = DataPreprocessing(shift_data)
+        shift_data = processor.preprocess_data()
+        return shift_data
+    except Exception as e:
+        logging.error(f"error occured during data preprocessing....")
+        raise MyException(e, sys)
 
 shift_data = load_data()
-shift_data = DataValidation.validate_data(shift_data)
-DataPreprocessing.start_data_preprocessing(shift_data=shift_data)
+shift_data = validate_data(shift_data)
+start_data_preprocessing(shift_data=shift_data)
             

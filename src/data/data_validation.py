@@ -48,35 +48,34 @@ class DataValidation:
             logging.info("No duplicate rows found in the dataframe.")
         return duplicates
     
-    @staticmethod
-    def validate_data(df: pd.DataFrame):
+def validate_data(df: pd.DataFrame):
+    """
+        This function validates the data loaded from teh database file.
+        It checks if the data has the expected schema, including the correct columns and data types.
+
+        Args:
+            df (pd.DataFrame): The dataFrame to be validated.
+        Returns:
+            pd.DataFrame: The validated dataframe.
         """
-            This function validates the data loaded from teh database file.
-            It checks if the data has the expected schema, including the correct columns and data types.
+    try:
+        logging.info("Starting data validation process")
+        validator = DataValidation(df)
 
-            Args:
-                df (pd.DataFrame): The dataFrame to be validated.
-            Returns:
-                pd.DataFrame: The validated dataframe.
-            """
-        try:
-            logging.info("Starting data validation process")
-            validator = DataValidation(df)
+        validator.check_empty_data()
+        validator.checking_for_missing_values()
+        validator.checking_for_duplicates()
 
-            validator.check_empty_data()
-            validator.checking_for_missing_values()
-            validator.checking_for_duplicates()
+        logging.info("Data Validation process completed successfully")
 
-            logging.info("Data Validation process completed successfully")
-
-            return df
-        except Exception as e:
-            logging.error(f"Error occured during data validation: {e}")
-            raise MyException(e, sys)
+        return df
+    except Exception as e:
+        logging.error(f"Error occured during data validation: {e}")
+        raise MyException(e, sys)
 
 
 shift_data = load_data()
-DataValidation.validate_data(shift_data)
+validate_data(shift_data)
 
 
 

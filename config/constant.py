@@ -8,5 +8,6 @@ print(f"BASE_DIR: {BASE_DIR}")
 database_path = os.path.abspath(os.path.join(BASE_DIR, 'notebook', 'ShiftData.db'))
 data_artifact = os.path.abspath(os.path.join(BASE_DIR, 'data_artifact', 'data'))
 
+SCHEMA_PATH = os.path.abspath(os.path.join(BASE_DIR, 'config', 'schema.yml'))
 target_column = "Shift_efficiency_score"
 print(database_path)
