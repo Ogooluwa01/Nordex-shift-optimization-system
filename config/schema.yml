@@ -1,50 +1,34 @@
-colums:
+columns:
   columns_to_drop:
-  col_to_drop = [
-
-#identifiers
-    - shift_id 
+    - shift_id
     - production_id
     - machine_id
     - supervisor_id
-    - qc_id 
+    - qc_id
     - operator_id
-    - operator_name 
-
-    # audit field
+    - operator_name
     - resolved_by
-
-    # raw datetime format columns
     - start_time
     - end_time
     - date
-    - shift_duration
-    - downtime_ratio
+    - timestamp
+    - maintenance_id
 
-    #columns I dropped 
-    - shift_name
-    - defect_type
-    - issue_type 
-    - inspection_result 
-    - severity 
-    - skill_category
-    - shift_duration
-    - defect_rate
-    - downtime_ratio
-    - total_machine_hours
-    
   numerical_columns:
     - units_produced
     - defect_count
     - cycle_time_avg
-    - shift_efficiency_score
     - experience_level
     - runtime_hours
     - downtime_minutes
     - maintenance_downtime
     - temperature
     - humidity
-  
+    - shift_duration
+    - downtime_ratio
+    - defect_rate
+    - total_machine_hours
+
   categorical_columns:
     - shift_name
     - skill_category
@@ -53,4 +37,3 @@ colums:
     - defect_type
     - severity
     - inspection_result
-    - experience_level

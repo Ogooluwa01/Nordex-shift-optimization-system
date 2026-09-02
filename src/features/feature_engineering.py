@@ -15,7 +15,7 @@ from config.constant import SCHEMA_PATH
 logging = configure_logger()
 
 class Feature_Engineering:
-    def __int__(self, df: pd.DataFrame):
+    def __init__(self, df: pd.DataFrame):
         self.shift_data = df
         logging.info("feature engineering intialized")
 
@@ -95,10 +95,15 @@ def start_feature_engineering(shift_data: pd.DataFrame):
         logging.error("error occured during features engineering initialization...")
         raise MyException(e, sys)
 
-shift_data = load_data
+shift_data = load_data()
 validated_data = validate_data(shift_data)
 processed_data = start_data_preprocessing(validated_data)
 X_train, X_test, y_train, y_test = start_feature_engineering (processed_data)
+
 print("feature engineering completed ....")
 print(X_train.head())
-print(X_test.head)
+print(X_test.head())
+
+### not sorted out yet come back to this later
+    ## can u plesae check this code I acn't find my error cause u literally have an error in the code also when explaining but in the next class u didn't talk about that 
+    # you went into another topic modelling. 

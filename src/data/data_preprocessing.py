@@ -54,6 +54,8 @@ class DataPreprocessing:
                 logging.warning(f"removing {duplicates} duplicated rows")
                 self.shift_data.drop_duplicates(inplace= True)
 
+            return self.shift_data
+            
         except Exception as e:
             logging.error(f"error occured when dropping duplicated values {e}")
             raise MyException(e, sys)
@@ -63,8 +65,9 @@ class DataPreprocessing:
             logging.info("starting the data preprocessing pipeline ...")
             self.shift_data = self.filling_missing_values()
             self.shift_data = self.remove_duplicates()
-            return self.shift_data
             logging.info("data preprocessing completed.")
+            return self.shift_data
+            
         
         except Exception as e:
             logging.error(f"error occured during data preprocessing {e}")
@@ -101,6 +104,7 @@ def start_data_preprocessing(shift_data: pd.DataFrame):
     except Exception as e:
         logging.error(f"error occured during data preprocessing....")
         raise MyException(e, sys)
+    
 
 shift_data = load_data()
 shift_data = validate_data(shift_data)
