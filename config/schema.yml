@@ -27,7 +27,6 @@ columns:
     - shift_duration
     - downtime_ratio
     - defect_rate
-    - total_machine_hours
 
   categorical_columns:
     - shift_name
