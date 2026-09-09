@@ -40,5 +40,31 @@ def get_existing_model_metrics(registered_model_name):
         logging.warning(f"No existing model found or error occurred fecthing the metrics {e}")
         return None, None
 
-def load_model_from_mlflow(model_name= "" )
-    # continue from here later.
+def load_model_from_mlflow(model_name= "NordexShiftOptimizationModel" ):
+    """
+    Load the latest version of the model from MLFLOW.
+    """
+    try:
+        client = MlflowClient()
+        logging.info(f"Loading the latest version of the model '{model_name}' from MLFLOW...")
+
+        latest_versions = client.get_latest_versions(
+            name = model_name,
+            )
+        if not latest_versions:
+            raise MyException("No model found in production...")
+
+        # Get the latest version based on the version number
+        latest_version = latest_versions[0].version
+
+        model_uri = f"models:/{model_name}/{latest_version.version}"
+
+        model = mlflow.pyfunc.load_model(model_uri)
+
+        logging.info(f"model  successfully loaded from MLFLOW:(model_name)")
+        return model
+
+    except Exception as e:
+        logging.error(f"Error occurred while loading the model from MLFLOW: {e}")
+        raise MyException(e, None)
+    
