@@ -104,6 +104,3 @@ print("feature engineering completed ....")
 print(X_train.head())
 print(X_test.head())
 
-### not sorted out yet come back to this later
-    ## can u plesae check this code I acn't find my error cause u literally have an error in the code also when explaining but in the next class u didn't talk about that 
-    # you went into another topic modelling. 

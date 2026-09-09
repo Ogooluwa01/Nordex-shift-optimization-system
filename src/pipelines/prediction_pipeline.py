@@ -1,4 +1,5 @@
 import pandas as pd
+import sys
 import numpy as np
 from src.logger import configure_logger
 from src.exception import MyException
@@ -21,3 +22,7 @@ def prediction_pipeline(input_data: dict, model):
 
         prediction = model.predict(df)
         logging.info(f"prediction completed: {predictions}")
+        return prediction.tolist()
+    except Exception as e:
+        logging.error(f"error occured during prediction: {e}")
+        raise MyException(e, sys)

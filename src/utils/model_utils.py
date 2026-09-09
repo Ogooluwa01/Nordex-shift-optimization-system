@@ -39,4 +39,6 @@ def get_existing_model_metrics(registered_model_name):
     except Exception as e:
         logging.warning(f"No existing model found or error occurred fecthing the metrics {e}")
         return None, None
-    
+
+def load_model_from_mlflow(model_name= "" )
+    # continue from here later.
