@@ -13,6 +13,7 @@ columns:
     - date
     - timestamp
     - maintenance_id
+    
 
   numerical_columns:
     - units_produced
@@ -21,7 +22,7 @@ columns:
     - experience_level
     - runtime_hours
     - downtime_minutes
-    - maintenance_downtime
+    - maintenance_flag
     - temperature
     - humidity
     - shift_duration

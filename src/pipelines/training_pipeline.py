@@ -39,6 +39,7 @@ def start_model_training():
             return pipeline, r2, mae
 
     except Exception as e:
+        logging.error("error occured during model training {e}")
         raise MyException(e, sys)
 
 start_model_training()

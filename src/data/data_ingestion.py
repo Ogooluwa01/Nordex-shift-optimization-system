@@ -29,6 +29,10 @@ def load_data():
         shift_data = pd.read_sql("select * from ShiftPerformance", conn)
         conn.close()
 
+        print("data_artifact =", repr(data_artifact))
+        print("database_path =", repr(database_path))
+        print("data_artifact exists =", os.path.exists(data_artifact))
+
         os.makedirs(data_artifact, exist_ok=True)
         shift_data.to_csv(os.path.join(data_artifact, 'ingested_data.csv'), index = False)
 
