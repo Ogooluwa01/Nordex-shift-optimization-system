@@ -84,5 +84,45 @@ with prediction_tab:
     with col2:
         humidity = st.number_input("Humidity", min_value=10.0, max_value = 100.0, value =50.0, step=1.0)
 
-        
+    st.subheadert("Shift Context")
+    col1, col2, col3 = st.columns(3)
 
+    with col1:
+        shift_name = st.selectbox("Shift Name", categories["shift_name"])
+    with col2:
+        skill_category = st.selectbox("Skill Category", categories["skill_categories"])
+    with col3:
+        machine_status = st.selectbox("Machine Status", categories["machine_status"])
+
+    shift_duration = runtime_hours
+    day_of_week = datetime.datetime.today().weekday()
+
+    st.subheader("Shift Summary")
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.metric("shift Duration", f"{shift_duration:.1f} hours")
+    with col2:
+        st.metric("Day of Week", day_of_week)
+    st.divider()
+
+    if st.button("Predict Shift Efficiency", type = "primary", use_container_width=True):
+        payload = {
+            "units_produced": units_produced,
+            "defect_count": defect_count,
+            "cycle_time_avg": cycle_time_avg,
+            "experience_level": experience_level,
+            "runtime_hours": runtime_hours,
+            "downtime_minutes": downtime_minutes,
+            "maintenance_flag": maintenance_flag,
+            "maintenance_downtime":maintenance_downtime,
+            "temperature":temperature,
+            "humidity": humidity,
+            "shift_duration":shift_duration,
+            "day_of_week":day_of_week,
+            "shift_name": shift_name,
+            "skill_category":skill_category,
+            "machine_status":machine_status
+        }
+
+        
